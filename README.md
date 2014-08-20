@@ -1,1 +1,1 @@
-    make initial-setup
+    $ make initial-setup
