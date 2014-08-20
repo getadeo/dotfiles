@@ -96,8 +96,8 @@ let g:gitgutter_sign_column_always = 1
 let g:gitgutter_enabled = 1
 let g:gitgutter_highlight_lines = 0
 let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '*'
-let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_modified = '*' 
+let g:gitgutter_sign_removed = '-' 
 let g:gitgutter_sign_modified_removed = '*-'
 
  NeoBundle 'kien/ctrlp.vim'
@@ -170,6 +170,9 @@ let g:notes_suffix = '.txt'
 highlight notesItalic cterm=italic
 
  NeoBundle 'terryma/vim-multiple-cursors'
+ NeoBundle 'tpope/vim-haml'
+ NeoBundle 'vim-scripts/jQuery'
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
  call neobundle#end()
 
