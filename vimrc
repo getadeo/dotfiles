@@ -5,10 +5,12 @@ set cursorline
 set antialias
 set nu
 set visualbell
-set showcmd
+"set showcmd
+set noshowmode
+set laststatus=0
 set hidden
-set wildmenu
-set showmatch
+"set wildmenu
+"set showmatch
 colorscheme Monokai
 set listchars=tab:▸\ ,eol:¬,nbsp:⋅,trail:•
 set colorcolumn=81
@@ -50,7 +52,7 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
 
 "ruby autocomplete
-autocmd FileType eruby,ruby set omnifunc=rubycomplete#Complete
+"autocmd FileType eruby,ruby set omnifunc=rubycomplete#Complete
 autocmd FileType eruby,ruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType eruby,ruby let g:rubycomplete_rails = 1 
 autocmd FileType eruby,ruby let g:rubycomplete_classes_in_global = 1
@@ -143,7 +145,7 @@ else
         let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
- NeoBundle 'https://github.com/Valloric/YouCompleteMe.git' , {
+ NeoBundle 'Valloric/YouCompleteMe.git' , {
              \ 'build' : {
              \    'unix' : './install.sh --clang-completer --system-libclang'
              \ },
