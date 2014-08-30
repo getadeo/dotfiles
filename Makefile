@@ -8,3 +8,7 @@ initial-setup:
 	cp UltiSnips ~/.vim/UltiSnips
 	curl -L http://install.ohmyz.sh | sh
 	@chsh -s /bin/zsh 
+
+copy:
+	cp -rf ~/.vim/UltiSnips ~/Documents/dotfiles/UltiSnips                   
+	cp ~/.vimrc ~/Documents/dotfiles/vimrc
