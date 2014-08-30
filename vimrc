@@ -77,12 +77,25 @@ autocmd FileType eruby,ruby let g:rubycomplete_classes_in_global = 1
  " Note: You don't set neobundle setting in .gvimrc!
  
  NeoBundle 'mattn/calendar-vim'
- NeoBundle 'mattn/emmet-vim'
  NeoBundle 'roman/golden-ratio'
  NeoBundle 'tpope/vim-endwise'
  NeoBundle 'vim-ruby/vim-ruby'
  NeoBundle 'tpope/vim-rails'
+ NeoBundle 'tristen/vim-sparkup'
+ 
+ NeoBundle 'honza/vim-snippets'
+ NeoBundle 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<c-w>"
+let g:UltiSnipsJumpForwardTrigger="<c-s-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-s-k>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
+ NeoBundle 'hail2u/vim-css3-syntax'
+augroup VimCSS3Syntax
+  autocmd!
+
+  autocmd FileType css setlocal iskeyword+=-
+augroup END
 
  NeoBundle 'scrooloose/nerdtree'
 "NerdTree
@@ -180,6 +193,7 @@ let g:multi_cursor_start_key='<F6>'
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
  NeoBundle 'cakebaker/scss-syntax.vim'
+au BufRead,BufNewFile *.scss set filetype=scss.css
 
 "function! s:swap_lines(n1, n2)
 "    let line1 = getline(a:n1)

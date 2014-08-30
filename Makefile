@@ -5,5 +5,6 @@ initial-setup:
 	cp vimrc ~/.vimrc
 	cp tmux.conf ~/.tmux.conf
 	mkdir ~/.vim/colors && cp -rf colors/* ~/.vim/colors
+	cp UltiSnips ~/.vim/UltiSnips
 	curl -L http://install.ohmyz.sh | sh
 	@chsh -s /bin/zsh 
