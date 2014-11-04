@@ -1,0 +1,16 @@
+#jinja
+snippet block "jinja Block" 
+{% block $1 %}
+$2
+{% endblock %}
+endsnippet
+
+snippet extends "jinja Extends"
+{% extends "$1" %}
+$2
+endsnippet
+
+snippet urlfor "jinja url_for" 
+{{ url_for('static', filename='$1') }}
+$2
+endsnippet

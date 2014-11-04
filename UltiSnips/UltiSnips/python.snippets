@@ -1,0 +1,40 @@
+snippet class:db "SQLAlchemy Model" 
+class $1(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+endsnippet
+
+snippet db:string "SQLAlchemy String" 
+ db.Column(db.String($1))
+endsnippet
+
+snippet db:integer "SQLAlchemy Integer" 
+ db.Column(db.Integer)
+endsnippet
+
+snippet db:boolean "SQLAlchemy Boolean" 
+ db.Column(db.Boolean, default=$1)
+endsnippet
+
+snippet flask:run "Run script" 
+if __name__=='__main__':
+    app.run(debug=True)
+endsnippet
+
+snippet route "Flask"
+@$1.route('/$2')
+def $3($4):
+    $5
+endsnippet
+
+snippet class:form "Wtforms" 
+class $1(Form):
+    $2
+endsnippet
+
+snippet form:string "Wtforms StringField" 
+ StringField('$1', validators=[Required()$2])
+endsnippet
+
+snippet form:submit "Wtforms SubmitField" 
+ SubmitField('$1')
+endsnippet
