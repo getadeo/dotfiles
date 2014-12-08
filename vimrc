@@ -82,13 +82,14 @@ autocmd FileType eruby,ruby let g:rubycomplete_classes_in_global = 1
  NeoBundle 'vim-ruby/vim-ruby'
  NeoBundle 'tpope/vim-rails'
  NeoBundle 'tristen/vim-sparkup'
+ NeoBundle 'fatih/vim-go'
  
  NeoBundle 'honza/vim-snippets'
  NeoBundle 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<c-w>"
-let g:UltiSnipsJumpForwardTrigger="<c-s-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-s-k>"
-let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+ let g:UltiSnipsExpandTrigger="<c-w>"
+ let g:UltiSnipsJumpForwardTrigger="<c-s-j>"
+ let g:UltiSnipsJumpBackwardTrigger="<c-s-k>"
+ let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
  NeoBundle 'hail2u/vim-css3-syntax'
 augroup VimCSS3Syntax
@@ -184,7 +185,7 @@ let g:notes_directories = ['~/Dropbox/Notes','~/Documents/Notes']
 let g:notes_suffix = '.txt'
 highlight notesItalic cterm=italic
 
- NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'terryma/vim-multiple-cursors'
 let g:multi_cursor_start_key='<F6>'
 
  NeoBundle 'tpope/vim-haml'
