@@ -12,6 +12,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-endwise'
 call plug#end()
 
 " General Configuration
