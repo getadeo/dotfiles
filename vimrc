@@ -13,6 +13,9 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-endwise'
+Plug 'rstacruz/sparkup'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 call plug#end()
 
 " General Configuration
@@ -51,7 +54,7 @@ nnoremap <Leader>q :qa<CR>
 nnoremap <Leader>! :q!<CR>
 
 " ignore
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 
 " insert end
 imap <S-CR> <CR><CR>end<Esc>-cc
@@ -85,6 +88,8 @@ let g:html_indent_inctags = "html,body,head,tbody"
 map <C-\> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif 
 let g:NERDTreeWinPos = "right"
+
+let NERDTreeIgnore=['\.pyc$']
 
 " gitgutter config
 let g:gitgutter_sign_column_always = 1
@@ -183,3 +188,13 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 " vim indentline config
 let g:indentLine_char = '┆'
+
+" Unite
+if executable('ack')
+  " Use ack in unite grep source.
+  let g:unite_source_grep_command = 'ack'
+  let g:unite_source_grep_default_opts =
+  \ '-i --no-heading --no-color -k -H'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+nnoremap <leader>/ :<C-u>Unite grep:.<CR>
