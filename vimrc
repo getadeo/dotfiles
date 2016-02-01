@@ -36,6 +36,7 @@ colorscheme seoul256
 set listchars=tab:▸\ ,eol:¬,nbsp:⋅,trail:•
 set colorcolumn=80
 set nowrap
+set nohlsearch
 
 "tab navigation
 nnoremap th  :tabnext<CR>
