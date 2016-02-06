@@ -50,9 +50,9 @@ nnoremap tq  :tabclose<CR>
 "space as leader
 let mapleader = "\<Space>"
 "map frequent actions to leader
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :qa<CR>
-nnoremap <Leader>! :q!<CR>
+"nnoremap <Leader>w :w<CR>
+"nnoremap <Leader>q :qa<CR>
+"nnoremap <Leader>! :q!<CR>
 
 " ignore
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
@@ -81,7 +81,7 @@ nnoremap B 0
 nnoremap E $
 
 " remap c-v
-nnoremap <C-v> <C-Slt-v>
+"nnoremap <C-v> <C-q>
 
 let g:html_indent_inctags = "html,body,head,tbody"
 

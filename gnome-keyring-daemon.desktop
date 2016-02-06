@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/gnome-keyring-daemon
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Gnome Keyring Daemon
+Name=Gnome Keyring Daemon
+Comment[en_US]=Load gnome keyring daemon
+Comment=Load gnome keyring daemon
