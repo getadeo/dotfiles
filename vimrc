@@ -2,6 +2,8 @@ set shell=/bin/zsh
 set encoding=utf-8
 
 call plug#begin('~/.vim/plugged')
+Plug 'andviro/flake8-vim'
+Plug 'nvie/vim-flake8'
 Plug 'junegunn/seoul256.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
@@ -53,6 +55,7 @@ let mapleader = "\<Space>"
 "nnoremap <Leader>w :w<CR>
 "nnoremap <Leader>q :qa<CR>
 "nnoremap <Leader>! :q!<CR>
+nnoremap <F3> :PyFlakeAuto<CR>
 
 " ignore
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
