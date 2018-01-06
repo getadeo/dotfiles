@@ -2,8 +2,6 @@ set shell=/bin/zsh
 set encoding=utf-8
 
 call plug#begin('~/.vim/plugged')
-Plug 'andviro/flake8-vim'
-Plug 'nvie/vim-flake8'
 Plug 'junegunn/seoul256.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
@@ -18,6 +16,7 @@ Plug 'tpope/vim-endwise'
 Plug 'rstacruz/sparkup'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'flazz/vim-colorschemes'
 call plug#end()
 
 " General Configuration
@@ -34,7 +33,7 @@ set hidden
 "set showmode "Display the mode
 set wildmenu "display commandline autocompletion 
 set showmatch "highlight matching [{()}]
-colorscheme seoul256
+colorscheme molokai_dark
 set listchars=tab:▸\ ,eol:¬,nbsp:⋅,trail:•
 set colorcolumn=80
 set nowrap
@@ -96,7 +95,7 @@ let g:NERDTreeWinPos = "right"
 let NERDTreeIgnore=['\.pyc$']
 
 " gitgutter config
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 let g:gitgutter_enabled = 1
 let g:gitgutter_highlight_lines = 0
 let g:gitgutter_sign_added = '+'

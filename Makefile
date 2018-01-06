@@ -15,6 +15,9 @@ initial-setup-mac:
 	cat zshrc>> ~/.zshrc
 
 copy:
-	cp ~/.vimrc ~/playground/dotfiles/vimrc
-	cp ~/.tmux.conf ~/playground/dotfiles/tmux.conf
+	cp ~/.vimrc ~/workspace/dotfiles/vimrc
+	cp ~/.tmux.conf ~/workspace/dotfiles/tmux.conf
 	cp ~/.config/autostart/gnome-keyring-daemon.desktop .
+
+copy-mac:
+	cp ~/.vimrc ~/workspace/dotfiles/vimrc
