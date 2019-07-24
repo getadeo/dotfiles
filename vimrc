@@ -6,7 +6,8 @@ Plug 'junegunn/seoul256.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'roman/golden-ratio'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
 Plug 'kien/ctrlp.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdcommenter'
@@ -158,6 +159,7 @@ else
 endif
 
 " airline config
+let g:airline_theme='dark_minimal'
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -190,7 +192,9 @@ let g:airline_symbols.whitespace = 'Ξ'
 "vnoremap <C-S-k> :m '<-2<CR>gv=gv
 
 " vim indentline config
-let g:indentLine_char = '┆'
+let g:indentLine_color_term = 239
+"let g:indentLine_char = '┆'
+let g:indentLine_char = 'c'
 
 " Unite
 if executable('ack')
