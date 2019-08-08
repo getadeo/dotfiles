@@ -18,6 +18,7 @@ Plug 'rstacruz/sparkup'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'flazz/vim-colorschemes'
+Plug 'gabesoft/vim-ags'
 call plug#end()
 
 " General Configuration
