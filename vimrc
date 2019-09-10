@@ -72,6 +72,10 @@ if !has('gui_running')
     set t_Co=256
 endif
 
+" remap escape
+imap jk <Esc>
+imap kj <Esc>
+
 " window switching
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j

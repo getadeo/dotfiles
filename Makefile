@@ -14,6 +14,7 @@ initial-setup-mac:
 	cat zshrc>> ~/.zshrc
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	antibody bundle < ~/.zsh_plugins.txt
+	brew install rbenv
 
 copy:
 	cp ~/.vimrc ~/workspace/dotfiles/vimrc
