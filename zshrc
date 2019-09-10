@@ -7,4 +7,5 @@ fi
 #alias subl="subl3"
 #alias docker rmi none="docker rmi -f $(docker images -q -f dangling=true)"
 source <(antibody init)
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
