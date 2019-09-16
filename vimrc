@@ -19,6 +19,7 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'flazz/vim-colorschemes'
 Plug 'gabesoft/vim-ags'
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 " General Configuration
@@ -97,6 +98,8 @@ let g:html_indent_inctags = "html,body,head,tbody"
 map <C-\> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif 
 let g:NERDTreeWinPos = "right"
+
+autocmd FileType nerdtree setlocal noreadonly
 
 let NERDTreeIgnore=['\.pyc$']
 
