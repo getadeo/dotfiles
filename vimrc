@@ -2,171 +2,28 @@ set shell=/bin/zsh
 set encoding=utf-8
 
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/seoul256.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-gitgutter'
-Plug 'roman/golden-ratio'
+Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
-Plug 'kien/ctrlp.vim'
-Plug 'Yggdroot/indentLine'
-Plug 'scrooloose/nerdcommenter'
-Plug 'easymotion/vim-easymotion'
-Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-endwise'
-Plug 'rstacruz/sparkup'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'flazz/vim-colorschemes'
-Plug 'gabesoft/vim-ags'
-Plug 'wakatime/vim-wakatime'
+Plug 'junegunn/seoul256.vim'
 call plug#end()
 
 " General Configuration
-set nocompatible
-syntax on "syntax
-filetype on "load filetype-specific indent files
-filetype plugin indent on
-set antialias
 set nu
-set cursorline
-set visualbell "No Beeping
-set hidden 
-"set showcmd "Display commands
-"set showmode "Display the mode
-set wildmenu "display commandline autocompletion 
-set showmatch "highlight matching [{()}]
-colorscheme molokai_dark
-set listchars=tab:▸\ ,eol:¬,nbsp:⋅,trail:•
-set colorcolumn=80
-set nowrap
-set nohlsearch
+syntax on
+set smartindent
+set shiftwidth=2 " number of spaces when shift indenting
+set tabstop=2 " number of visual spacer per tab
+set softtabstop=2 " number of spaces in tab when editing
+set expandtab " tab to spaces
+set cursorline " highlight current line
+set showmatch " highlight matching [{()}]
+set incsearch " search as characters are entered
+set hlsearch " hightlight matches
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/* " ignore files and directories
+set noswapfile
 
-"tab navigation
-nnoremap th  :tabnext<CR>
-nnoremap tl  :tabprev<CR>
-"nnoremap tl  :tablast<CR>
-"nnoremap tt  :tabedit<Space>
-"nnoremap tn  :tabnext<Space>
-nnoremap tm  :tabm<Space>
-nnoremap tq  :tabclose<CR>
-
-"space as leader
-let mapleader = "\<Space>"
-"map frequent actions to leader
-"nnoremap <Leader>w :w<CR>
-"nnoremap <Leader>q :qa<CR>
-"nnoremap <Leader>! :q!<CR>
-nnoremap <F3> :PyFlakeAuto<CR>
-
-" ignore
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
-
-" insert end
-imap <S-CR> <CR><CR>end<Esc>-cc
-
-" improve autocomplete menu color
-highlight Pmenu ctermbg=238 gui=bold
-
-" set 256 color
-if !has('gui_running')
-    set t_Co=256
-endif
-
-" remap escape
-imap jk <Esc>
-imap kj <Esc>
-
-" window switching
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" move to beggining of the line
-nnoremap B 0 
-
-" move to end of the line
-nnoremap E $
-
-" remap c-v
-"nnoremap <C-v> <C-q>
-
-let g:html_indent_inctags = "html,body,head,tbody"
-
-" nerdtree
-map <C-\> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif 
-let g:NERDTreeWinPos = "right"
-
-autocmd FileType nerdtree setlocal noreadonly
-
-let NERDTreeIgnore=['\.pyc$']
-
-" gitgutter config
-set signcolumn=yes
-let g:gitgutter_enabled = 1
-let g:gitgutter_highlight_lines = 0
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '*'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_sign_modified_removed = '*-'
-
-" ctrlp config
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|\.(o|swp|pyc|egg)$'
-
-"set omnifunc=syntaxcomplete#Complete
-autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
-autocmd Filetype javascript setlocal ts=4 sts=4 sw=4 expandtab
-autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
-"setlocal foldmethod=marker foldmarker=start,end   "foldlevel=99
-"au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja "jinja config
-" jedi config
-autocmd FileType python setlocal completeopt-=preview
-
-" Navigation on insert mode
-imap <C-k> <Up>
-imap <C-j> <Down>
-imap <C-h> <Left>
-imap <C-l> <Right>
-
-" autocomplete
-"au FileType python set omnifunc=pythoncomplete#Complete
-"au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"au FileType html set omnifunc=htmlcomplete#CompleteTags
-"au FileType css set omnifunc=csscomplete#CompleteCSS
-" ruby C-Sutocomplete
-autocmd FileType eruby,ruby set omnifunc=rubycomplete#Complete
-autocmd FileType eruby,ruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType eruby,ruby let g:rubycomplete_rails = 1 
-autocmd FileType eruby,ruby let g:rubycomplete_classes_in_global = 1
-
-
-"let g:lightline = {
-"      \ 'colorscheme': 'Tomorrow',
-"      \ 'component': {
-"      \   'readonly': '%{&readonly?"Read Only":""}',
-"      \ },
-"      \ 'separator': { 'left': '','right': '' },
-"     \ 'subseparator': { 'left': '|', 'right': '|' }
-"     \ }
-
-" easymotion
-let g:EasyMotion_leader_key = '<Leader>'
-
-if exists('$TMUX') " allows cursor change in tmux mode
-        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
-" airline config
+" Airline configuration
 let g:airline_theme='dark_minimal'
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
@@ -190,26 +47,19 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
+" Colorscheme configuration
+colo seoul256
+set background=dark
 
-" move lines
-"nnoremap <C-S-j> :m .+1<CR>==
-"nnoremap <C-S-k> :m .-2<CR>==
-"inoremap <C-S-j> <Esc>:m .+1<CR>==gi
-"inoremap <C-S-k> <Esc>:m .-2<CR>==gi
-"vnoremap <C-S-j> :m '>+1<CR>gv=gv
-"vnoremap <C-S-k> :m '<-2<CR>gv=gv
+" Navigation on insert mode
+imap <C-k> <Up>
+imap <C-j> <Down>
+imap <C-h> <Left>
+imap <C-l> <Right>
 
-" vim indentline config
-let g:indentLine_color_term = 239
-"let g:indentLine_char = '┆'
-let g:indentLine_char = 'c'
-
-" Unite
-if executable('ack')
-  " Use ack in unite grep source.
-  let g:unite_source_grep_command = 'ack'
-  let g:unite_source_grep_default_opts =
-  \ '-i --no-heading --no-color -k -H'
-  let g:unite_source_grep_recursive_opt = ''
-endif
-nnoremap <leader>/ :<C-u>Unite grep:.<CR>
+" Folding
+set foldmethod=indent
+set foldlevel=1
+set foldclose=all
+let ruby_fold=1               " Ruby
+let javaScript_fold=1         " JavaScript
