@@ -6,10 +6,12 @@ Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
 Plug 'junegunn/seoul256.vim'
+Plug 'mattn/emmet-vim'
+Plug 'rking/ag.vim'
 call plug#end()
 
 " General Configuration
-set nu
+set relativenumber
 syntax on
 set smartindent
 set shiftwidth=2 " number of spaces when shift indenting
@@ -22,6 +24,7 @@ set incsearch " search as characters are entered
 set hlsearch " hightlight matches
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/* " ignore files and directories
 set noswapfile
+set clipboard=unnamed
 
 " Airline configuration
 let g:airline_theme='dark_minimal'
@@ -58,8 +61,36 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 
 " Folding
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=1
-set foldclose=all
+set foldnestmax=5
+"set foldclose=all
 let ruby_fold=1               " Ruby
 let javaScript_fold=1         " JavaScript
+
+" Moving lines up and down
+nnoremap <C-S-j> :m .+1<CR>==
+nnoremap <C-S-k> :m .-2<CR>==
+inoremap <C-S-j> <Esc>:m .+1<CR>==gi
+inoremap <C-S-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-S-j> :m '>+1<CR>gv=gv
+vnoremap <C-S-k> :m '<-2<CR>gv=gv
+
+" Window switching
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+"tab navigation
+nnoremap tn  :tabnext<CR>
+nnoremap tp  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+"nnoremap tt  :tabedit<Space>
+"nnoremap tn  :tabnext<Space>
+nnoremap tm  :tabm<Space>
+nnoremap tq  :tabclose<CR>
+
+
+" Yanking to clipboard
+vnoremap <C-S-c> "*y
