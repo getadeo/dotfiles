@@ -28,9 +28,10 @@ Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-surround'
 Plug 'slim-template/vim-slim'
 Plug 'jparise/vim-graphql'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'roman/golden-ratio'
 call plug#end()
 " END Plug ==============================================================
 "
@@ -48,11 +49,9 @@ endif
 
 syntax enable
 colorscheme nord
-" colorscheme challenger_deep
 
 " Airline configurations
 let g:airline_theme='nord'
-" let g:lightline = { 'colorscheme': 'challenger_deep'}
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
@@ -88,7 +87,7 @@ filetype plugin on
 set expandtab
 autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype go setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd Filetype go setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype json setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
@@ -179,6 +178,11 @@ nnoremap <Leader>rt :!ripper-tags -R<CR>
 
 " Yank upwards
 nnoremap <Leader>yk :-,yank<C-B><RIGHT>
+
+"quote/unquote word
+nnoremap <Leader>q" ciw""<Esc>P
+nnoremap <Leader>q' ciw''<Esc>P
+nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
 
 " END Mapping Settings ======================================================
 

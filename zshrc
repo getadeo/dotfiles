@@ -139,11 +139,11 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # Go
-export GOPATH=$HOME/go-workspace
+export GOPATH=$HOME/workspace/goworkspace
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
-export GOENV=$GOPATH/go-workspace/pkg
+export GOENV=$GOPATH/goworkspace/pkg
 
 
 # fzf settings
@@ -180,8 +180,8 @@ alias rc="RAILS_ENV=development bundle exec rails c"
 alias sk="RAILS_ENV=development bundle exec sidekiq"
 
 # Docker
-alias dup="docker-compose stop && docker-compose up -d mailhog postgres elasticsearch && RAILS_ENV=development bundle exec sidekiq"
-alias dstop="docker-compose stop"
+alias dup="brew services start redis && docker-compose stop && docker-compose up -d mailhog postgres elasticsearch && RAILS_ENV=development bundle exec sidekiq"
+alias dstop="brew services stop redis && docker-compose stop"
 alias drdangling="docker images -f 'dangling=true' -q"
 alias dprune="docker image prune"
 
@@ -200,7 +200,7 @@ alias v="vim ."
 
 # workspaces
 alias workspace="cd ~/workspace"
-alias go-workspace="cd ~/go-workspace"
+alias goworkspace="cd ~/workspace/goworkspace"
 alias talkpush="cd ~/workspace/talkpush/web-application"
 alias playground="cd ~/workspace/playground"
 alias dotfiles="cd ~/workspace/dotfiles"
