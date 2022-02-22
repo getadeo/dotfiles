@@ -31,7 +31,6 @@ Plug 'jparise/vim-graphql'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'roman/golden-ratio'
 call plug#end()
 " END Plug ==============================================================
 "
