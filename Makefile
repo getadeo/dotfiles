@@ -15,6 +15,5 @@ initial-setup-mac:
 	nvm install 12.10.0
 
 copy:
-	cp ~/.config/nvim/init.vim ~/workspace/dotfiles/vim/init.vim
 	cp ~/.tmux.conf ~/workspace/dotfiles/tmux/tmux.conf
 	cp ~/.zshrc ~/workspace/dotfiles/zshrc

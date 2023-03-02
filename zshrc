@@ -127,39 +127,38 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # Rbenv
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-source <(antibody init)
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
+# source <(antibody init)
 
 # Nvm
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
+# autoload -U add-zsh-hook
+# load-nvmrc() {
+#   local node_version="$(nvm version)"
+#   local nvmrc_path="$(nvm_find_nvmrc)"
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+#   if [ -n "$nvmrc_path" ]; then
+#     local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-
+#     if [ "$nvmrc_node_version" = "N/A" ]; then
+#       nvm install
+#     elif [ "$nvmrc_node_version" != "$node_version" ]; then
+#       nvm use
+#     fi
+#   elif [ "$node_version" != "$(nvm version default)" ]; then
+#     echo "Reverting to nvm default version"
+#     nvm use default
+#   fi
+# }
+# add-zsh-hook chpwd load-nvmrc
+# load-nvmrc
 
 # Go
 export GOPATH=$HOME/workspace/goworkspace
@@ -168,13 +167,10 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export GOENV=$GOPATH/goworkspace/pkg
 
-
 # fzf settings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules -g ""'
 export FZF_DEFAULT_OPTS='--preview "bat --style=numbers --color=always {} | head -500 "'
-
-
 
 # Nvim Alias
 alias vim="nvim"
@@ -203,7 +199,7 @@ alias rc="RAILS_ENV=development bundle exec rails c"
 alias sk="RAILS_ENV=development bundle exec sidekiq"
 
 # Docker
-alias dup="brew services start redis && docker-compose stop && docker-compose up -d mailhog postgres elasticsearch && RAILS_ENV=development bundle exec sidekiq"
+alias dup="brew services start redis && docker-compose up -d postgres mailhog elasticsearch"
 alias dstop="brew services stop redis && docker-compose stop"
 alias drdangling="docker images -f 'dangling=true' -q"
 alias dprune="docker image prune"
@@ -212,8 +208,8 @@ alias dprune="docker image prune"
 alias yw="yarn webpack"
 
 # ngrok
-alias ng="ngrok http -host-header=rewrite mustafar.lvh.me:80"
-alias pldtng="ngrok http --region=ap --hostname=talkpush-pldt-demo.ap.ngrok.io -host-header=rewrite mustafar.lvh.me:80"
+alias ng="ngrok http -host-header=rewrite acme.lvh.test:3001"
+alias pldtng="ngrok http --region=ap --hostname=talkpush-pldt-demo.ap.ngrok.io -host-header=rewrite acme.lvh.test:3001"
 
 # lvh setup
 alias lvh="echo "rdr pass inet proto tcp from any to any port 80 -> 127.0.0.1 port 3000" | sudo pfctl -ef -\n"
@@ -225,6 +221,7 @@ alias v="vim ."
 alias workspace="cd ~/workspace"
 alias goworkspace="cd ~/workspace/goworkspace"
 alias talkpush="cd ~/workspace/talkpush/web-application"
+alias pantheon="cd ~/workspace/talkpush/pantheon"
 alias playground="cd ~/workspace/playground"
 alias dotfiles="cd ~/workspace/dotfiles"
 alias til="cd ~/workspace/til"
@@ -232,7 +229,6 @@ alias til="cd ~/workspace/til"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="/usr/local/sbin:$PATH"
-
 
 export PROJECT_ID="talkpush-release-204682513ba3"
 export REGION=us-west1
@@ -246,13 +242,20 @@ alias tsmd="transmission-daemon"
 alias tsmlist="watch -n 1 transmission-remote -l"
 alias tsmexit="transmission-remote --exit"
 
+bindkey "[D" backward-word
+bindkey "[C" forward-word
+bindkey "^[a" beginning-of-line
+bindkey "^[e" end-of-line
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/genesistadeo/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/genesistadeo/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/genesistadeo/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/genesistadeo/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-bindkey "[D" backward-word
-bindkey "[C" forward-word
-bindkey "^[a" beginning-of-line
-bindkey "^[e" end-of-line
